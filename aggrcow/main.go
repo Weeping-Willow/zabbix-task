@@ -5,6 +5,38 @@ import (
 	"sort"
 )
 
+func main() {
+	var testCount int
+
+	// solution tester no likey
+	//fmt.Print("Enter the number of test cases: ")
+	_, err := fmt.Scan(&testCount)
+	if err != nil {
+		panic(fmt.Sprintf("failed to read number of test cases: %v", err))
+	}
+
+	for i := 0; i < testCount; i++ {
+		cows, stallCount := 0, 0
+		// solution tester no likey
+		//fmt.Print("Enter the number of stalls and cows: ")
+		_, err := fmt.Scan(&stallCount, &cows)
+		if err != nil {
+			panic(fmt.Sprintf("failed to read cows and/or stalls: %v", err))
+		}
+
+		stalls := make([]int, stallCount)
+		for j := 0; j < stallCount; j++ {
+			// solution tester no likey
+			//fmt.Printf("Enter the stall %d: ", j+1)
+			_, err := fmt.Scan(&stalls[j])
+			if err != nil {
+				panic(fmt.Sprintf("failed to read stall at index %d: %v", j, err))
+			}
+		}
+		fmt.Println(findMaxSpace(cows, stalls))
+	}
+}
+
 func findMaxSpace(cows int, stalls []int) int {
 	sort.SliceStable(stalls, func(i, j int) bool {
 		return stalls[i] < stalls[j]
@@ -44,36 +76,4 @@ func cowsFit(cows, spaceBetween int, stalls []int) bool {
 	}
 
 	return false
-}
-
-func main() {
-	var testCount int
-
-	// solution tester no likey
-	//fmt.Print("Enter the number of test cases: ")
-	_, err := fmt.Scan(&testCount)
-	if err != nil {
-		panic(fmt.Sprintf("failed to read number of test cases: %v", err))
-	}
-
-	for i := 0; i < testCount; i++ {
-		cows, stallCount := 0, 0
-		// solution tester no likey
-		//fmt.Print("Enter the number of stalls and cows: ")
-		_, err := fmt.Scan(&stallCount, &cows)
-		if err != nil {
-			panic(fmt.Sprintf("failed to read cows and/or stalls: %v", err))
-		}
-
-		stalls := make([]int, stallCount)
-		for j := 0; j < stallCount; j++ {
-			// solution tester no likey
-			//fmt.Printf("Enter the stall %d: ", j+1)
-			_, err := fmt.Scan(&stalls[j])
-			if err != nil {
-				panic(fmt.Sprintf("failed to read stall at index %d: %v", j, err))
-			}
-		}
-		fmt.Println(findMaxSpace(cows, stalls))
-	}
 }
