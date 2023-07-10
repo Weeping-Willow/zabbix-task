@@ -21,7 +21,7 @@ func main() {
 		//fmt.Print("Enter the number of stalls and cows: ")
 		_, err := fmt.Scan(&stallCount, &cows)
 		if err != nil {
-			panic(fmt.Sprintf("failed to read cows and/or stalls: %v", err))
+			panic(fmt.Sprintf("failed to read count of cows and/or stalls: %v", err))
 		}
 
 		stalls := make([]int, stallCount)
@@ -30,7 +30,7 @@ func main() {
 			//fmt.Printf("Enter the stall %d: ", j+1)
 			_, err := fmt.Scan(&stalls[j])
 			if err != nil {
-				panic(fmt.Sprintf("failed to read stall at index %d: %v", j, err))
+				panic(fmt.Sprintf("failed to read stall placement at index %d: %v", j, err))
 			}
 		}
 		fmt.Println(findMaxSpace(cows, stalls))
